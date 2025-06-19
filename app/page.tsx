@@ -320,7 +320,21 @@ export default function Home() {
       <header className="fixed top-0 left-0 right-0 z-50 bg-white/80 dark:bg-gray-900/80 backdrop-blur-md shadow-sm">
         <div className="container mx-auto px-4 py-4 flex justify-between items-center">
           <h1 className="text-2xl font-bold">Modern UI</h1>
-          <ThemeToggle />
+          <div className="flex items-center space-x-4">
+            <nav className="hidden md:flex space-x-6">
+              <a href="#" className="hover:text-blue-500 transition-colors">Home</a>
+              <a href="#services" className="hover:text-blue-500 transition-colors">Services</a>
+              <a href="#work" className="hover:text-blue-500 transition-colors">Work</a>
+              <a href="#testimonials" className="hover:text-blue-500 transition-colors">Testimonials</a>
+              <a href="#contact" className="hover:text-blue-500 transition-colors">Contact</a>
+            </nav>
+            <ThemeToggle />
+            <button className="md:hidden">
+              <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16m-7 6h7" />
+              </svg>
+            </button>
+          </div>
         </div>
       </header>
 
@@ -401,10 +415,10 @@ export default function Home() {
       </section>
 
       {/* Features Section */}
-      <section className="py-20 bg-gray-50 dark:bg-gray-800">
+      <section className="py-12 sm:py-16 md:py-20 bg-gray-50 dark:bg-gray-800" id="services">
         <div className="container mx-auto px-4">
           <motion.h2 
-            className="text-3xl font-bold text-center mb-12"
+            className="text-2xl sm:text-3xl font-bold text-center mb-6 sm:mb-12"
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5 }}
@@ -413,7 +427,7 @@ export default function Home() {
             Our Services
           </motion.h2>
           
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 md:gap-8">
             {cardItems.map((card, index) => (
               <Card 
                 key={index}
@@ -425,26 +439,27 @@ export default function Home() {
           </div>
         </div>
       </section>
-
+      
       {/* Showcase Section */}
-      <section className="py-20 bg-white dark:bg-gray-900">
+      <section className="py-12 sm:py-16 md:py-20 bg-white dark:bg-gray-900" id="work">
         <div className="container mx-auto px-4">
           <ShowcaseWork items={showcaseItems} />
         </div>
       </section>
-
+      
       {/* Stats Section */}
-      <section className="py-20 bg-gray-50 dark:bg-gray-800">
+      <section className="py-12 sm:py-16 md:py-20 bg-gray-50 dark:bg-gray-800">
         <div className="container mx-auto px-4">
-          <StatsComponent stats={statsItems} />
+          <StatsComponent stats={statsItems} columns={2} />
         </div>
       </section>
 
       {/* Parallax Section */}
-      <Parallax className="h-[400px] bg-blue-600 dark:bg-blue-800 flex items-center justify-center">
-        <div className="text-center text-white p-8">
-          <h2 className="text-4xl font-bold mb-4">Parallax Effect</h2>
-          <p className="text-xl max-w-2xl mx-auto">
+      <Parallax className="h-[300px] sm:h-[400px] bg-blue-600 dark:bg-blue-800 flex items-center justify-center relative overflow-hidden">
+        <div className="absolute inset-0 bg-gradient-to-r from-blue-700/50 to-purple-700/50"></div>
+        <div className="text-center text-white p-4 sm:p-8 relative z-10">
+          <h2 className="text-3xl sm:text-4xl font-bold mb-3 sm:mb-4">Parallax Effect</h2>
+          <p className="text-base sm:text-xl max-w-2xl mx-auto">
             This section demonstrates the parallax scrolling effect, creating depth and visual interest as you scroll through the page.
           </p>
         </div>
@@ -458,15 +473,20 @@ export default function Home() {
       </section>
 
       {/* Call to Action with Ripple Button */}
-      <section className="py-20 bg-gray-50 dark:bg-gray-800">
+      <section className="py-12 sm:py-16 md:py-20 bg-gray-50 dark:bg-gray-800" id="contact">
         <div className="container mx-auto px-4 text-center">
-          <h2 className="text-3xl font-bold mb-6">Ready to Get Started?</h2>
-          <p className="text-lg text-gray-600 dark:text-gray-300 mb-8 max-w-2xl mx-auto">
+          <h2 className="text-2xl sm:text-3xl font-bold mb-4 sm:mb-6">Ready to Get Started?</h2>
+          <p className="text-base sm:text-lg text-gray-600 dark:text-gray-300 mb-6 sm:mb-8 max-w-2xl mx-auto">
             Join us today and experience the power of modern web development with Next.js and beautiful UI components.
           </p>
-          <RippleButton className="px-8 py-3 text-lg">
-            Get Started
-          </RippleButton>
+          <motion.div
+            animate={{ y: [0, -10, 0] }}
+            transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
+          >
+            <RippleButton className="px-6 sm:px-8 py-2 sm:py-3 text-base sm:text-lg bg-gradient-to-r from-blue-500 to-blue-700 hover:from-blue-600 hover:to-blue-800 text-white rounded-lg">
+              Get Started
+            </RippleButton>
+          </motion.div>
         </div>
       </section>
 

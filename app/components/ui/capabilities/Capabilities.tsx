@@ -17,35 +17,35 @@ interface CapabilityProps {
 
 export default function Capabilities({ title, subtitle, description, tabs }: CapabilityProps) {
   return (
-    <div className="bg-gray-300 bg-opacity-80 p-8 rounded-lg">
-      <div className="text-center mb-12">
-        <p className="text-gray-600 text-sm tracking-wider mb-2">[{subtitle}]</p>
-        <h2 className="text-5xl font-light text-gray-800 mb-4">{title}</h2>
-        <p className="text-xl text-gray-700">{description}</p>
+    <div className="bg-gray-300 bg-opacity-80 p-4 sm:p-8 rounded-lg">
+      <div className="text-center mb-8 sm:mb-12">
+        <p className="text-gray-600 text-xs sm:text-sm tracking-wider mb-2">[{subtitle}]</p>
+        <h2 className="text-3xl sm:text-4xl md:text-5xl font-light text-gray-800 mb-3 sm:mb-4">{title}</h2>
+        <p className="text-lg sm:text-xl text-gray-700">{description}</p>
       </div>
       
-      <div className="flex gap-4 mb-8 justify-center">
+      <div className="flex flex-wrap gap-2 sm:gap-4 mb-6 sm:mb-8 justify-center">
         {tabs.map((tab) => (
           <motion.div 
             key={tab.id}
             whileHover={{ y: -5 }}
-            className="flex items-center gap-2 px-4 py-2 rounded-md"
+            className="flex items-center gap-1 sm:gap-2 px-3 py-1 sm:px-4 sm:py-2 rounded-md"
             style={{ backgroundColor: tab.color }}
           >
             <span className="text-white">{tab.icon}</span>
-            <span className="text-white font-medium uppercase text-sm">{tab.name}</span>
+            <span className="text-white font-medium uppercase text-xs sm:text-sm">{tab.name}</span>
           </motion.div>
         ))}
       </div>
       
-      <div className="bg-white rounded-lg p-6 shadow-lg">
-        <div className="flex justify-between">
+      <div className="bg-white rounded-lg p-4 sm:p-6 shadow-lg">
+        <div className="flex flex-col lg:flex-row lg:justify-between gap-6">
           <div className="max-w-md">
-            <h3 className="text-2xl font-bold mb-2">Real-Time Convergent Billing</h3>
-            <p className="text-gray-600">Instantaneous, accurate billing across all services and platforms.</p>
+            <h3 className="text-xl sm:text-2xl font-bold mb-2">Real-Time Convergent Billing</h3>
+            <p className="text-gray-600 text-sm sm:text-base">Instantaneous, accurate billing across all services and platforms.</p>
           </div>
           
-          <div className="bg-gray-100 rounded-lg p-4 w-80">
+          <div className="bg-gray-100 rounded-lg p-3 sm:p-4 w-full lg:w-80">
             <div className="flex items-center justify-between mb-4">
               <div className="bg-black rounded p-1">
                 <span className="text-white text-xs font-bold">EMS</span>
@@ -74,7 +74,7 @@ export default function Capabilities({ title, subtitle, description, tabs }: Cap
           </div>
         </div>
         
-        <div className="flex mt-8 space-x-2">
+        <div className="flex flex-wrap mt-6 sm:mt-8 gap-2">
           <button className="bg-gray-800 text-white px-4 py-2 rounded flex items-center">
             <span>PRODUCTS</span>
             <span className="ml-2">+</span>

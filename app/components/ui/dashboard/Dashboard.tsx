@@ -5,7 +5,7 @@ import { motion } from 'framer-motion';
 
 export default function Dashboard() {
   return (
-    <div className="bg-blue-900 text-white p-8 rounded-lg relative overflow-hidden">
+    <div className="bg-blue-900 text-white p-4 sm:p-8 rounded-lg relative overflow-hidden">
       {/* Add a background image with overlay */}
       <div className="absolute inset-0 z-0 opacity-20">
         <img 
@@ -16,7 +16,7 @@ export default function Dashboard() {
       </div>
       
       <div className="relative z-10"> {/* Make content appear above the background */}
-        <div className="flex justify-center space-x-6 mb-8">
+        <div className="hidden md:flex justify-center space-x-6 mb-8">
           <div className="flex items-center">
             <span className="text-white mr-2">★</span>
             <span>4.8 rating on</span>
@@ -39,14 +39,32 @@ export default function Dashboard() {
           </div>
         </div>
         
-        <div className="text-center mb-12">
+        {/* Mobile ratings - visible only on small screens */}
+        <div className="md:hidden grid grid-cols-2 gap-3 mb-6">
+          <div className="flex items-center bg-blue-800/50 p-2 rounded">
+            <span className="text-white mr-2">★</span>
+            <div>
+              <span className="text-xs">4.8 rating on</span>
+              <span className="text-xs font-bold ml-1 block">Capterra</span>
+            </div>
+          </div>
+          <div className="flex items-center bg-blue-800/50 p-2 rounded">
+            <span className="text-white mr-2">★</span>
+            <div>
+              <span className="text-xs">4.8 rating on</span>
+              <span className="text-xs font-bold ml-1 block">G2</span>
+            </div>
+          </div>
+        </div>
+        
+        <div className="text-center mb-8 sm:mb-12">
           <motion.h1 
-            className="text-5xl font-bold mb-4"
+            className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4 leading-tight"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5 }}
           >
-            Create reports, forecasts,<br />dashboards & consolidations
+            Create reports, forecasts,<br className="hidden sm:block" />dashboards & consolidations
           </motion.h1>
           
           <motion.div
@@ -80,7 +98,7 @@ export default function Dashboard() {
       </div>
       
       {/* Add a feature image at the bottom */}
-      <div className="mt-8 relative z-10 flex justify-center">
+      <div className="mt-6 sm:mt-8 relative z-10 flex justify-center">
         <img 
           src="https://placehold.co/1200x600/FFFFFF/0066FF/png?text=Dashboard+Preview" 
           alt="Dashboard preview" 
