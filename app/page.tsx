@@ -12,6 +12,17 @@ import Dashboard from './components/ui/dashboard/Dashboard';
 import EnergyStats from './components/ui/stats/EnergyStats';
 import { motion } from 'framer-motion';
 
+// Add these imports
+import CustomerSection from './components/ui/customer/CustomerSection';
+import Graph from './components/ui/graph/Graph';
+import Loader from './components/ui/loader/Loader';
+import ScrollToTop from './components/ui/scroll/ScrollToTop';
+import Popup from './components/ui/popup/Popup';
+import ShowcaseWork from './components/ui/showcase/ShowcaseWork';
+import StatsComponent from './components/ui/stats/StatsComponent';
+import StrikingSection from './components/ui/striking/StrikingSection';
+import Testimonials from './components/ui/testimonials/Testimonials';
+
 // Sample data for carousel
 const carouselItems = [
   {
@@ -155,6 +166,153 @@ const energyStats = [
   }
 ];
 
+// Sample data for new components
+const customerItems = [
+  {
+    id: '1',
+    name: 'TechCorp',
+    logo: 'https://placehold.co/200x100/0066FF/FFFFFF/png?text=TechCorp',
+    industry: 'Technology'
+  },
+  {
+    id: '2',
+    name: 'FinanceHub',
+    logo: 'https://placehold.co/200x100/FF6600/FFFFFF/png?text=FinanceHub',
+    industry: 'Finance'
+  },
+  {
+    id: '3',
+    name: 'HealthPlus',
+    logo: 'https://placehold.co/200x100/22C55E/FFFFFF/png?text=HealthPlus',
+    industry: 'Healthcare'
+  },
+  {
+    id: '4',
+    name: 'EduLearn',
+    logo: 'https://placehold.co/200x100/8B5CF6/FFFFFF/png?text=EduLearn',
+    industry: 'Education'
+  },
+  {
+    id: '5',
+    name: 'RetailPro',
+    logo: 'https://placehold.co/200x100/EC4899/FFFFFF/png?text=RetailPro',
+    industry: 'Retail'
+  }
+];
+
+const graphData = [
+  { label: 'Jan', value: 30 },
+  { label: 'Feb', value: 45 },
+  { label: 'Mar', value: 25 },
+  { label: 'Apr', value: 60 },
+  { label: 'May', value: 40 },
+  { label: 'Jun', value: 80 }
+];
+
+const showcaseItems = [
+  {
+    id: '1',
+    title: 'E-commerce Platform',
+    description: 'A modern e-commerce platform built with Next.js and Tailwind CSS, featuring a responsive design and seamless checkout experience.',
+    image: 'https://placehold.co/800x600/1E40AF/FFFFFF/png?text=E-commerce+Project',
+    category: 'Web Development',
+    link: '#'
+  },
+  {
+    id: '2',
+    title: 'Mobile Banking App',
+    description: 'A secure and user-friendly mobile banking application with real-time transaction tracking and budget management features.',
+    image: 'https://placehold.co/800x600/047857/FFFFFF/png?text=Banking+App',
+    category: 'Mobile App',
+    link: '#'
+  },
+  {
+    id: '3',
+    title: 'Healthcare Dashboard',
+    description: 'An intuitive dashboard for healthcare professionals to monitor patient data and manage appointments efficiently.',
+    image: 'https://placehold.co/800x600/7E22CE/FFFFFF/png?text=Healthcare+Dashboard',
+    category: 'Dashboard',
+    link: '#'
+  },
+  {
+    id: '4',
+    title: 'Educational Platform',
+    description: 'An interactive learning platform with course management, progress tracking, and video conferencing capabilities.',
+    image: 'https://placehold.co/800x600/B91C1C/FFFFFF/png?text=Educational+Platform',
+    category: 'Web Development',
+    link: '#'
+  },
+  {
+    id: '5',
+    title: 'Fitness Tracker',
+    description: 'A comprehensive fitness tracking application that monitors workouts, nutrition, and provides personalized recommendations.',
+    image: 'https://placehold.co/800x600/0369A1/FFFFFF/png?text=Fitness+Tracker',
+    category: 'Mobile App',
+    link: '#'
+  },
+  {
+    id: '6',
+    title: 'Analytics Dashboard',
+    description: 'A powerful analytics dashboard with interactive charts and data visualization tools for business intelligence.',
+    image: 'https://placehold.co/800x600/A16207/FFFFFF/png?text=Analytics+Dashboard',
+    category: 'Dashboard',
+    link: '#'
+  }
+];
+
+const statsItems = [
+  {
+    id: '1',
+    value: '500+',
+    label: 'Completed Projects',
+  },
+  {
+    id: '2',
+    value: '99%',
+    label: 'Client Satisfaction',
+  },
+  {
+    id: '3',
+    value: '24/7',
+    label: 'Support Available',
+  },
+  {
+    id: '4',
+    value: '50+',
+    label: 'Team Members',
+  }
+];
+
+const testimonialItems = [
+  {
+    id: '1',
+    content: 'Working with this team was an absolute pleasure. They delivered our project on time and exceeded our expectations in every way.',
+    author: 'Sarah Johnson',
+    role: 'CEO',
+    company: 'TechCorp',
+    avatar: 'https://placehold.co/200x200/1E40AF/FFFFFF/png?text=SJ',
+    rating: 5
+  },
+  {
+    id: '2',
+    content: 'The attention to detail and technical expertise demonstrated by the team was impressive. Our new website has received countless compliments.',
+    author: 'Michael Chen',
+    role: 'Marketing Director',
+    company: 'GlobalBrand',
+    avatar: 'https://placehold.co/200x200/047857/FFFFFF/png?text=MC',
+    rating: 5
+  },
+  {
+    id: '3',
+    content: 'I was blown away by the quality of work and the level of communication throughout the project. Highly recommended!',
+    author: 'Emily Rodriguez',
+    role: 'Product Manager',
+    company: 'InnovateTech',
+    avatar: 'https://placehold.co/200x200/7E22CE/FFFFFF/png?text=ER',
+    rating: 4
+  }
+];
+
 export default function Home() {
   return (
     <main className="min-h-screen">
@@ -190,8 +348,15 @@ export default function Home() {
         </div>
       </section>
 
-      {/* BSS/OSS Capabilities Section */}
+      {/* Customer Section */}
       <section className="py-20 bg-white dark:bg-gray-900">
+        <div className="container mx-auto px-4">
+          <CustomerSection customers={customerItems} />
+        </div>
+      </section>
+
+      {/* BSS/OSS Capabilities Section */}
+      <section className="py-20 bg-gray-50 dark:bg-gray-800">
         <div className="container mx-auto px-4">
           <Capabilities 
             title="Unparalleled BSS/OSS Capabilities" 
@@ -199,6 +364,13 @@ export default function Home() {
             description="Comprehensive business support systems"
             tabs={capabilityTabs}
           />
+        </div>
+      </section>
+
+      {/* Graph Section */}
+      <section className="py-20 bg-white dark:bg-gray-900">
+        <div className="container mx-auto px-4">
+          <Graph data={graphData} title="Performance Metrics" />
         </div>
       </section>
 
@@ -254,6 +426,20 @@ export default function Home() {
         </div>
       </section>
 
+      {/* Showcase Section */}
+      <section className="py-20 bg-white dark:bg-gray-900">
+        <div className="container mx-auto px-4">
+          <ShowcaseWork items={showcaseItems} />
+        </div>
+      </section>
+
+      {/* Stats Section */}
+      <section className="py-20 bg-gray-50 dark:bg-gray-800">
+        <div className="container mx-auto px-4">
+          <StatsComponent stats={statsItems} />
+        </div>
+      </section>
+
       {/* Parallax Section */}
       <Parallax className="h-[400px] bg-blue-600 dark:bg-blue-800 flex items-center justify-center">
         <div className="text-center text-white p-8">
@@ -264,8 +450,15 @@ export default function Home() {
         </div>
       </Parallax>
 
-      {/* Call to Action with Ripple Button */}
+      {/* Testimonials Section */}
       <section className="py-20 bg-white dark:bg-gray-900">
+        <div className="container mx-auto px-4">
+          <Testimonials testimonials={testimonialItems} />
+        </div>
+      </section>
+
+      {/* Call to Action with Ripple Button */}
+      <section className="py-20 bg-gray-50 dark:bg-gray-800">
         <div className="container mx-auto px-4 text-center">
           <h2 className="text-3xl font-bold mb-6">Ready to Get Started?</h2>
           <p className="text-lg text-gray-600 dark:text-gray-300 mb-8 max-w-2xl mx-auto">
@@ -287,6 +480,11 @@ export default function Home() {
           </div>
         </div>
       </footer>
+
+      {/* Utility Components */}
+      <Loader />
+      <ScrollToTop />
+      {/* <Popup /> */}
     </main>
   );
 }
